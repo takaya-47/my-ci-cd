@@ -9,5 +9,6 @@ jobs:
                   CONTEXT: ${{ toJSON(github) }} # コンテキストのJSON文字列化
     print:
         runs-on: ubuntu-latest
+        needs: dump
         steps:
             - run: echo ${{ join(github.event.commits.*.author.name, ' ') }}
