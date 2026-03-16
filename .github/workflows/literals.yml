@@ -1,9 +1,13 @@
 name: Literals
 on: push
 jobs:
-    test:
+    dump:
         runs-on: ubuntu-latest
         steps:
             - run: echo "${CONTEXT}"
               env:
                   CONTEXT: ${{ toJSON(github) }} # コンテキストのJSON文字列化
+    print:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo ${{ github.event.*.html_url }}
