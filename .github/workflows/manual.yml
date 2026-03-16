@@ -2,13 +2,18 @@ name: Manual
 on:
     workflow_dispatch: # 手動実行イベント
         inputs:
-            greeting: # 入力パラメータ名
+            name: # 入力パラメータ名
                 type: string # データ型（文字列）
                 default: Hello # 入力パラメータのデフォルト値
                 required: true # 入力パラメータの必須フラグ
-                description: A cheerful word # 入力パラメータの概要
+                description: 名前 # 入力パラメータの概要
+            title: # 入力パラメータ名
+                type: choice # データ型（選択肢）
+                options: ["さん", "様"] # 選択肢のリスト
+                required: true # 入力パラメータの必須フラグ
+                description: 敬称 # 入力パラメータの概要
 jobs:
     run:
         runs-on: ubuntu-latest
         steps:
-            - run: echo "${{ inputs.greeting }}" # 入力パラメータ「greeting」の参照
+            - run: echo "${{ inputs.name }}" # 入力パラメータ「name」の参照
