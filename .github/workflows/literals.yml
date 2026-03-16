@@ -5,6 +5,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - run: printenv | grep "LITERAL"
+            - run : echo ${LITERAL_NULL} ${LITERAL_BOOLEAN} ${LITERAL_NUMBER} ${LITERAL_STRING} ${LITERAL_OMIT_STRING}
               env:
                   LITERAL_NULL: ${{ null}} # null型
                   LITERAL_BOOLEAN: ${{ true }} # boolean型
