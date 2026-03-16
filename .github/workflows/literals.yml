@@ -12,4 +12,5 @@ jobs:
             OTHER: ${{ 'this will not be printed' }}
         steps:
             - run: printenv | grep "LITERAL"
-            - run : echo ${LITERAL_NULL} ${LITERAL_BOOLEAN} ${LITERAL_NUMBER} ${LITERAL_STRING} ${LITERAL_OMIT_STRING}
+            - run: echo ${LITERAL_NULL} ${LITERAL_BOOLEAN} ${LITERAL_NUMBER} ${LITERAL_STRING} ${LITERAL_OMIT_STRING}
+            - run: echo ${{ github.event.*.html_url }}
