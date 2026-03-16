@@ -16,4 +16,4 @@ jobs:
     run:
         runs-on: ubuntu-latest
         steps:
-            - run: echo "${{ inputs.name }}" # 入力パラメータ「name」の参照
+            - run: echo "${{ inputs.name }} ${{ inputs.title }}" # 入力パラメータの参照
