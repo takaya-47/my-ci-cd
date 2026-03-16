@@ -1,16 +1,9 @@
 name: Literals
 on: push
 jobs:
-    print:
+    test:
         runs-on: ubuntu-latest
-        env:
-            LITERAL_NULL: ${{ null}} # null型
-            LITERAL_BOOLEAN: ${{ true }} # boolean型
-            LITERAL_NUMBER: ${{ 1234 }} # number型
-            LITERAL_STRING: ${{ 'Hello' }} # string型（通常記法）
-            LITERAL_OMIT_STRING: World # string型（省略記法）
-            OTHER: ${{ 'this will not be printed' }}
         steps:
-            - run: printenv | grep "LITERAL"
-            - run: echo ${LITERAL_NULL} ${LITERAL_BOOLEAN} ${LITERAL_NUMBER} ${LITERAL_STRING} ${LITERAL_OMIT_STRING}
-            - run: echo ${{ github.event.*.html_url }}
+            - run: echo "${CONTEXT}"
+              env:
+                  CONTEXT: ${{ toJSON(github) }} # コンテキストのJSON文字列化
