@@ -1,0 +1,12 @@
+name: Variables And Secrets
+on: push
+jobs:
+    print:
+        runs-on: ubuntu-latest
+        env:
+            SECRET: ${{ secrets.SECRET }} # Secretsの参照
+            VARIABLE: ${{ vars.VARIABLE }} # Variablesの参照
+        steps:
+            - run: echo "${SECRET}" # Secretsマスクされる
+            - run: echo "${VARIABLE}" # Variablesはマスクされない
+
