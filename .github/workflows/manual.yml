@@ -4,7 +4,7 @@ on:
         inputs:
             name: # 入力パラメータ名
                 type: string # データ型（文字列）
-                default: Hello # 入力パラメータのデフォルト値
+                default: Takaya # 入力パラメータのデフォルト値
                 required: true # 入力パラメータの必須フラグ
                 description: 名前 # 入力パラメータの概要
             title: # 入力パラメータ名
