@@ -1,10 +1,10 @@
-name: Naming
-run-name: Run by ${{ github.actor }}
+name: Auto cancel
 on: push
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true # 同一グループのワークフローが実行中ならキャンセル
 jobs:
-  print:
-    name: Super Useful Job   # ジョブ名の指定
+  sleep:
     runs-on: ubuntu-latest
     steps:
-      - name: Amazing Script # ステップ名の指定
-        run: echo "Hello"
+      - run: sleep 120
