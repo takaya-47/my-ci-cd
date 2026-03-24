@@ -1,10 +1,26 @@
-name: Job summaries
-on: push
+name: Environment
+on:
+  workflow_dispatch:
+    inputs:
+      environment-name:
+        type: environment
+        default: Test
+        required: true
+        description: "Input an environment name to run this workflow"
 jobs:
-  log:
+  print:
     runs-on: ubuntu-latest
+    environment: ${{ inputs.environment-name }}
+    env:
+      USERNAME: ${{ vars.USERNAME }}
+      PASSWORD: ${{ secrets.PASSWORD }}
+      ENVIRONMENT_NAME: ${{ inputs.environment-name }}
     steps:
-      - run: | # マークダウンテキストをジョブサマリーへ出力
-          echo "## Example Title :rocket:" >> "${GITHUB_STEP_SUMMARY}"
-          echo "- first line" >> "${GITHUB_STEP_SUMMARY}"
-          echo "- second line" >> "${GITHUB_STEP_SUMMARY}"
+      - name: Print environment
+        run: echo "Environment is ${{ ENVIRONMENT_NAME }}"
+
+      - name: Print username
+        run: echo "username is ${{ USERNAME }}"
+
+      - name: Print password
+        run: echo "password is ${{ PASSWORD }}"
