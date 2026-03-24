@@ -17,10 +17,10 @@ jobs:
       ENVIRONMENT_NAME: ${{ inputs.environment-name }}
     steps:
       - name: Print environment
-        run: echo "Environment is ${ ENVIRONMENT_NAME }"
+        run: echo "Environment is ${ENVIRONMENT_NAME}"
 
       - name: Print username
-        run: echo "username is ${ USERNAME }"
+        run: echo "username is ${USERNAME}"
 
       - name: Print password
-        run: echo "password is ${ PASSWORD }"
+        run: echo "password is ${PASSWORD}"
