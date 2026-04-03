@@ -9,4 +9,4 @@ jobs:
             - name: Print github context
               run: echo "${CONTEXT}"
               env:
-                CONTEXT: ${{ toJson(github) }}
+                CONTEXT: ${{ toJson(github.event) }}
