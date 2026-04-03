@@ -34,5 +34,6 @@ jobs:
               env:
                 ACTOR: ${{ github.actor }}
                 PR_NUMBER: ${{inputs.pr-number }}
+                GITHUB_TOKEN: ${{ secrets.token }}
         outputs:
             comment: ${{ steps.comment.outputs.body }}
