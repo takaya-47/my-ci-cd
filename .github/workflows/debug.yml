@@ -5,8 +5,8 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Check out the repository
-              uses: actions/checkout@v3
+              uses: actions/checkout@v4
             - name: Print github context
               run: echo "${CONTEXT}"
               env:
-                CONTEXT: ${{ toJson(github.event) }}
+                CONTEXT: ${{ toJson(github.event.pull_request) }}
