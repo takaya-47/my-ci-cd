@@ -1,6 +1,9 @@
 name: Debug
 on: push
 permissions: {}
+defaults:
+    run:
+        shell: bash
 jobs:
     debug:
         runs-on: ubuntu-latest
