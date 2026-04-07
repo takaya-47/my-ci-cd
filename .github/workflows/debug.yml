@@ -1,5 +1,6 @@
 name: Debug
-on: pull_request
+on: push
+permissions: {}
 jobs:
     debug:
         runs-on: ubuntu-latest
