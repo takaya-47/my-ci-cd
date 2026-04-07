@@ -18,6 +18,7 @@ on:
 jobs:
     comment:
         runs-on: ubuntu-latest
+        timeout-minutes: 1
         permissions:
             contents: read
             pull-requests: write
