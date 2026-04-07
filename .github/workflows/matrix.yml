@@ -1,12 +1,13 @@
 name: Matrix Job
 on: push
+permissions: {}
 jobs:
     sample-job:
         runs-on: ubuntu-latest
         strategy:
             matrix:
                 time: [10, 20, 30]
-            # fail-fast: false
+            fail-fast: false
         steps:
             - name: "start job"
               run: sleep ${SLEEP_TIME} && exit 1
