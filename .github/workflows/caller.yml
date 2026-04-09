@@ -1,5 +1,12 @@
 name: Call Reusable Workflow
 on: pull_request
+defaults:
+    run:
+        shell: bash # デフォルトシェルは常に指定
+permissions: {} # ワークフロー全体のパーミッションをリセットし、都度ジョブで設定する
+concurrency:
+    group: ${{ github.workflow }} - ${{ github.ref }} # 「ワークフロー名 - ブランチ名」でワークフローをグループ化
+    cancel-in-progress: true # 同じグループ内の古いワークフローはキャンセル(PRがトリガーなので、最新のコード以外でワークフローを実行する意味が薄い)
 jobs:
     call:
         uses: ./.github/workflows/reusable-workflows.yml
@@ -10,9 +17,11 @@ jobs:
         permissions:
             contents: read
             pull-requests: write
+        # timeout-minutes: 1 # Reusable Workflowを呼び出す側では設定不可
     print:
         needs: call
         runs-on: ubuntu-latest
+        timeout-minutes: 1 # 常にタイムアウトは指定（ジョブもしくはステップレベル）
         steps:
             - run: |
                 echo "Result: ${MESSAGE}"
